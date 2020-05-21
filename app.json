@@ -1,0 +1,46 @@
+{
+  "pages":[
+    "pages/blog/blogList",
+    "pages/my/myhome",
+    "pages/blogdetail/blogDetails"
+
+  ],
+  "window":{
+    "enablePullDownRefresh": true,
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#ff1299",
+    "navigationBarTitleText": "AJin-Blog",
+    "navigationBarTextStyle":"white",
+    "usingComponents":{
+      "refresh-view":""
+    }
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [{
+      "pagePath": "pages/blog/blogList",
+      "text": "首页",
+      "iconPath": "images/tabbar/like-f.png",
+      "selectedIconPath": "images/tabbar/like-o.png"
+    },
+    {
+      "pagePath": "pages/my/myhome",
+      "text": "我的",
+      "iconPath": "images/tabbar/user-f.png",
+      "selectedIconPath": "images/tabbar/user-o.png"
+    }
+    
+  ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+
+  "sitemapLocation": "sitemap.json"
+}

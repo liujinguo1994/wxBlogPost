@@ -1,0 +1,5 @@
+<!--pages/blogdetail/blogDetails.wxml-->
+
+  <view class="tag">{{blogDetails.title}}</view>
+
+   <view class="tag">{{blogDetails.content}}</view>

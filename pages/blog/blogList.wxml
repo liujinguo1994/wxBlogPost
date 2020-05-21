@@ -1,0 +1,11 @@
+
+  <view class="common-problem">
+    <view class="item" wx:for="{{blogList}}" wx:key="id">
+      <view class="question-box">
+         <navigator url="../blogdetail/blogDetails?cid={{item.cid}}" hover-class="navigator-hover">
+          <text class="title">{{item.title}}\n</text>
+          <text class="content">{{item.content}}</text>
+         </navigator>
+      </view>
+    </view>
+  </view>
