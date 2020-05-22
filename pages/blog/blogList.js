@@ -12,7 +12,8 @@ Page({
     page: 1,
     limit: 10,
     count: 0,
-    showPage: false
+    showPage: false,
+    uhide: 0
   },
 
   /**
@@ -42,6 +43,23 @@ Page({
       }
     })
   },
+ //点击切换隐藏和显示
+ toggleBtn: function (event) { 
+  var that = this;
+  var toggleBtnVal = that.data.uhide;
+  var itemId = event.currentTarget.id; 
+  if (toggleBtnVal == itemId) {
+    console.log("into"+toggleBtnVal+"_______"+itemId)
+    that.setData({
+      uhide: 0
+    })
+  } else {
+    console.log("intoEsle"+toggleBtnVal+"_______"+itemId)
+    that.setData({
+      uhide: itemId
+    })
+  } 
+},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
