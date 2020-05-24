@@ -11,6 +11,7 @@
     "navigationBarBackgroundColor": "#ff1299",
     "navigationBarTitleText": "AJin-Blog",
     "navigationBarTextStyle":"white",
+    "onReachBottomDistance": 50,
     "usingComponents":{
       "refresh-view":""
     }

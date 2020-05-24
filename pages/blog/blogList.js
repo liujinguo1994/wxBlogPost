@@ -8,11 +8,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    
     blogList:[],
     page: 1,
-    limit: 10,
-    count: 0,
-    showPage: false,
+    isLastPage:false,
+    tips:'上拉加载更多',
     uhide: 0
   },
 
@@ -34,15 +34,52 @@ Page({
     util.request(api.BlogListUrl,{
       p:that.data.page
     }).then(function(res){
-      if (res.data.total > 0) {
+      console.log("teete" + res.data.list)
+      console.log("total" + res.data.pages)
+      //响应成功
+      console.log("响应是否成功:"+res.errno)
+      if (res.errno == 0) {
+        if(res.data.pages < that.data.page) {
+          that.setData({
+            isLastPage : true,
+            tips : "已显示全部啦",
+          })
+        }else
         that.setData({
-          blogList: res.data.list,
-          showPage: true,
-          count: res.data.total
-        });
+          blogList:that.data.blogList.concat(res.data.list)
+        })
+        console.log("是否显示全部："+that.data.tips)
+        // 追加数据
+        console.log(res.data)
+      }else{
+        app.showError()
       }
     })
   },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh(){
+    this.getIndexData();
+    wx.stopPullDownRefresh()
+  },
+/**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    console.log("下拉事件1");
+    if(this.data.isLastPage){
+      return
+    }
+    this.setData({
+      page: this.data.page + 1
+    })
+    this.getIndexData()
+    console.log("下拉事件2");
+  },
+
+
+
  //点击切换隐藏和显示
  toggleBtn: function (event) { 
   var that = this;
@@ -86,30 +123,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh(){
-    this.getIndexData();
-    wx.stopPullDownRefresh()
-  },
-  getBlogList:function(){
-    wx.showLoading({
-      title: '更新中',
-    });
-    setTimeout(function(){
-      wx.hideLoading({
-      },2000)
-    })
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
 
   },
 

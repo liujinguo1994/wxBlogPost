@@ -1,9 +1,9 @@
-<view class='container'>
-  <!-- 订单列表 -->
-  <block wx:for-items="{{blogList}}">
+<scroll-view class="container">
+<!-- 文章列表 -->
+  <view wx:for-items="{{blogList}}" wx:key="key">
     <view class='card  b-shadow' bindtap='toggleBtn' id="{{item.cid}}">
       <view class='nearCard-fl'>
-        <image src='{{item.title}}'></image>
+        <!-- <image src='{{item.title}}'></image> -->
       </view>
       <view class='nearCard-fr'>
         <view>标题：<text class='c-green'>{{item.title}}</text>
@@ -18,5 +18,5 @@
         <view class='feedBack'>意见反馈</view>
       </view>
     </view>
-  </block>
-</view>
+  </view>
+</scroll-view> 

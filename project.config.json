@@ -27,7 +27,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.11.0",
 	"appid": "wx1919b17925344b4a",
-	"projectname": "miniprogram-2",
+	"projectname": "wxBlogPost",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
