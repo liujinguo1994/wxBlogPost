@@ -8,7 +8,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
     blogList:[],
     page: 1,
     isLastPage:false,
@@ -20,10 +19,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getIndexData();
+    this.getIndexDataUp();
   },
 
-  getIndexData: function(){
+  getIndexDataUp: function(){
     wx.showLoading({
       title: '加载中',
     });
@@ -44,10 +43,45 @@ Page({
             isLastPage : true,
             tips : "已显示全部啦",
           })
-        }else
-        that.setData({
-          blogList:that.data.blogList.concat(res.data.list)
-        })
+        }else{
+          that.setData({
+            blogList:that.data.blogList.concat(res.data.list)
+          })
+        }
+        
+        console.log("是否显示全部："+that.data.tips)
+        // 追加数据
+        console.log(res.data)
+      }else{
+        app.showError()
+      }
+    })
+  },
+
+
+  getIndexDataDown: function(){
+    wx.showLoading({
+      title: '加载中',
+    });
+    setTimeout(function(){
+      wx.hideLoading()
+    },500)
+    let that = this;
+    util.request(api.BlogListUrl,{
+      p:that.data.page
+    }).then(function(res){
+      console.log("teete" + res.data.list)
+      console.log("total" + res.data.pages)
+      //响应成功
+      console.log("响应是否成功:"+res.errno)
+      if (res.errno == 0) {
+        if(res.data.pages < that.data.page) {
+          that.setData({
+            isLastPage : true,
+            tips : "已显示全部啦",
+          })
+        }
+        
         console.log("是否显示全部："+that.data.tips)
         // 追加数据
         console.log(res.data)
@@ -60,7 +94,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh(){
-    this.getIndexData();
+    this.getIndexDataDown();
     wx.stopPullDownRefresh()
   },
 /**
@@ -74,7 +108,7 @@ Page({
     this.setData({
       page: this.data.page + 1
     })
-    this.getIndexData()
+    this.getIndexDataUp()
     console.log("下拉事件2");
   },
 
@@ -130,6 +164,5 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
   }
 })

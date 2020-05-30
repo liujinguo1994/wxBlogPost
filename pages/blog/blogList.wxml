@@ -6,9 +6,9 @@
         <!-- <image src='{{item.title}}'></image> -->
       </view>
       <view class='nearCard-fr'>
-        <view>标题：<text class='c-green'>{{item.title}}</text>
+        <view>标题：<a class='title'>{{item.title}}</a>
         </view>
-        <view>内容：<text class='c-green'>{{item.content}}</text>
+        <view>内容：<text class='content'>{{item.content}}</text>
         </view>
       </view>
       <view class='down clearfix {{uhide==item.cid?"":"hidden"}}'>

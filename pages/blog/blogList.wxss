@@ -11,7 +11,7 @@
 }
 
 .nearCard-fr {
-  font-size: 27rpx;
+  font-size: 30rpx;
   line-height: 50rpx;
   width: 60%;
   margin-left: 40%;
@@ -19,8 +19,28 @@
   color: #999;
 }
 
-.nearCard-fr text {
-  font-size: 22rpx;
+.nearCard-fr {
+  font-size: 26rpx;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  align-content: center;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.title {
+  font-size: 26rpx;
+  overflow: hidden;
+  white-space:nowrap;
+  word-break: break-all;
+  align-content: center;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.content {
+  font-size: 26rpx;
   text-overflow: -o-ellipsis-lastline;
   overflow: hidden;
   align-content: center;
